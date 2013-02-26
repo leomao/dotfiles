@@ -1,0 +1,25 @@
+[user]
+    name = YourName
+    email = YourEmail
+[alias]
+    ci = commit
+    st = status -sb
+    fc = fetch 
+    mg = merge
+    br = branch
+    co = checkout
+    df = difftool
+    la = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative --branches
+    lg = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative
+[push]
+    default = tracking
+[branch]
+    autosetuprebase = always
+[color]
+    ui = true
+[diff]
+    tool = gvimdiff
+[difftool]
+    prompt = false
+[merge]
+    tool = gvimdiff
