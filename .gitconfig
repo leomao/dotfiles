@@ -2,6 +2,8 @@
     name = YourName
     email = YourEmail
 [alias]
+    ph = push
+    pl = pull
     ci = commit
     st = status -sb
     fc = fetch 
