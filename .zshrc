@@ -8,6 +8,10 @@ ZSH_THEME="bira"
 # rm confirmation
 setopt RM_STAR_WAIT
 
+# Directory Stack settings
+DIRSTACKSIZE=8
+setopt autopushd pushdminus pushdsilent pushdtohome
+
 # Title
 case $TERM in
 sun-cmd)
@@ -88,7 +92,7 @@ bindkey "^[[B" history-beginning-search-forward
 # Alias
 #############################
 # List direcory contents
-alias ls='ls --color'
+alias ls='ls --color --group-directories-first'
 alias l='ls -F'
 alias ll='ls -lhF'
 alias la='ls -lhAF'
@@ -99,6 +103,10 @@ alias history='fc -l 1'
 
 # Tmux 256 default
 alias tmux='tmux -2'
+
+# Directory Stack alias
+alias dirs="dirs -v"
+alias ds="dirs"
 
 #############################
 # Completion
