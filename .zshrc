@@ -96,6 +96,7 @@ alias ls='ls --color --group-directories-first'
 alias l='ls -F'
 alias ll='ls -lhF'
 alias la='ls -lhAF'
+alias lt='ls -lhtAF'
 alias sl=ls # often screw this up
 
 # Show history
