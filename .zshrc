@@ -109,6 +109,8 @@ alias tmux='tmux -2'
 alias dirs="dirs -v"
 alias ds="dirs"
 
+[[ -f ~/.zsh_alias ]] && . ~/.zsh_alias
+
 #############################
 # Completion
 #############################
