@@ -1,10 +1,6 @@
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
 
-ZSH=$HOME/.zsh
-ZSH_THEME="bira"
-#source $ZSH/zsh.sh
-
 # rm confirmation
 setopt RM_STAR_WAIT
 
