@@ -1,6 +1,11 @@
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
 
+# no flow control
+stty stop undef
+stty start undef
+setopt noflowcontrol
+
 # rm confirmation
 setopt RM_STAR_WAIT
 
