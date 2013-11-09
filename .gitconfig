@@ -5,13 +5,15 @@
     ph = push
     pl = pull
     ci = commit
+    rb = rebase
     st = status -sb
     fc = fetch 
     mg = merge
     br = branch
     co = checkout
     ss = stash
-    df = difftool
+    df = diff
+    dt = difftool
     la = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative --branches
     lg = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative
     ls = ls-files
@@ -22,8 +24,8 @@
 [color]
     ui = true
 [diff]
-    tool = gvimdiff
+    tool = vimdiff
 [difftool]
     prompt = false
 [merge]
-    tool = gvimdiff
+    tool = vimdiff
