@@ -133,6 +133,5 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-
 # Env
 export EDITOR="vim"
