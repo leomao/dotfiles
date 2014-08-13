@@ -1,6 +1,9 @@
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
 
+# don't record duplicate history
+setopt HIST_IGNORE_DUPS
+
 # no flow control
 stty stop undef
 stty start undef
@@ -100,6 +103,8 @@ alias la='ls -lhAF'
 alias lt='ls -lhtAF'
 alias sl=ls # often screw this up
 
+alias less='less -R'
+
 # Show history
 alias history='fc -l 1'
 
@@ -110,7 +115,7 @@ alias tmux='tmux -2'
 alias dirs="dirs -v"
 alias ds="dirs"
 
-[[ -f ~/.zsh_alias ]] && . ~/.zsh_alias
+[[ -f ~/.zsh_custom ]] && . ~/.zsh_custom
 
 #############################
 # Completion
