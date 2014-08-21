@@ -6,6 +6,7 @@
     pl = pull
     ci = commit
     rb = rebase
+    chp = cherry-pick
     st = status -sb
     fc = fetch 
     mg = merge
