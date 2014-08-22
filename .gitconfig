@@ -10,6 +10,7 @@
     st = status -sb
     fc = fetch 
     mg = merge
+    mt = mergetool
     br = branch
     co = checkout
     ss = stash
@@ -30,3 +31,5 @@
     prompt = false
 [merge]
     tool = vimdiff
+[mergetool]
+	keepBackup = false
