@@ -42,7 +42,8 @@ RPROMPT=
 #############################
 # Bind Key
 #############################
-bindkey -e
+bindkey -v
+
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 typeset -A key
@@ -59,38 +60,29 @@ key[PageUp]=${terminfo[kpp]}
 key[PageDown]=${terminfo[knp]}
 
 # setup key accordingly
-[[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
-[[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
-[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
-[[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
-[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
-[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
-[[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
-[[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
-
-# fix xterm key binding
-[[ -n "^[[1~" ]]  && bindkey  "^[[1~"    beginning-of-line
-[[ -n "^[[4~" ]]  && bindkey  "^[[4~"    end-of-line
+[[ -n "${key[Home]}"     ]]  && bindkey  "${key[Home]}"     beginning-of-line
+[[ -n "${key[End]}"      ]]  && bindkey  "${key[End]}"      end-of-line
+[[ -n "${key[Insert]}"   ]]  && bindkey  "${key[Insert]}"   overwrite-mode
+[[ -n "${key[Delete]}"   ]]  && bindkey  "${key[Delete]}"   delete-char
+[[ -n "${key[Up]}"       ]]  && bindkey  "${key[Up]}"       up-line-or-history
+[[ -n "${key[Down]}"     ]]  && bindkey  "${key[Down]}"     down-line-or-history
+[[ -n "${key[Left]}"     ]]  && bindkey  "${key[Left]}"     backward-char
+[[ -n "${key[Right]}"    ]]  && bindkey  "${key[Right]}"    forward-char
+[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   beginning-of-buffer-or-history
+[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" end-of-buffer-or-history
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
-
-function zle-line-init () {
-    if (( ${+terminfo[smkx]}  )); then
-        echoti smkx
-    fi
-}
-function zle-line-finish () {
-    if (( ${+terminfo[rmkx]}  )); then
-        echoti rmkx
-    fi
-}
-
-zle -N zle-line-init
-zle -N zle-line-finish
-
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+    function zle-line-init () {
+        printf '%s' "${terminfo[smkx]}"
+    }
+    function zle-line-finish () {
+        printf '%s' "${terminfo[rmkx]}"
+    }
+    zle -N zle-line-init
+    zle -N zle-line-finish
+fi
 
 #############################
 # Alias
