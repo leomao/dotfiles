@@ -132,3 +132,4 @@ compinit
 
 # Env
 export EDITOR="vim"
+export TERM=xterm
