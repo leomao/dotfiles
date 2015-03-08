@@ -48,7 +48,6 @@ def task_git(keep):
 def task_zsh(keep):
     zshmap = {
         '.zshrc': '~/.zshrc',
-        '.zshenv': '~/.zshenv',
         '.zprofile': '~/.zprofile',
     }
     task_link(zshmap, keep)
