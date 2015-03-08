@@ -38,7 +38,7 @@ autoload -U colors && colors
 #prompt walters
 PROMPT="%n@%{$fg[red]%}%m %{$reset_color%}in %{$fg[green]%}%3~ 
 %{$fg[blue]%}%# %{$reset_color%}>> "
-RPROMPT=
+RPROMPT="%{$fg[magenta]%}%(?..[%?] )%{$reset_color%}"
 #############################
 # Bind Key
 #############################

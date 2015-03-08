@@ -1,6 +1,6 @@
 [user]
-    name = YourName
-    email = YourEmail
+    name = <YourName>
+    email = <YourEmail>
 [alias]
     ph = push
     pl = pull
