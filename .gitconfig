@@ -16,7 +16,8 @@
     ss = stash
     df = diff
     dt = difftool
-    la = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative --branches
+    la = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative --all
+    lb = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative --branches
     lg = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative
     ls = ls-files
 [push]
