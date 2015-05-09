@@ -10,26 +10,31 @@ parser.add_argument('target', nargs='?', default='all',
                     choices=['all', 'git', 'zsh', 'font', 'tmux'],
                     help='deploy target (default is all)')
 
-def check_path(targets):
+def run_cmd(cmd):
+    subprocess.call([cmd], shell=True)
+
+def check_path(targets, keep):
+    if keep:
+        cmd = 'mv {0} {0}.old'
+    else:
+        cmd = 'rm -rf {0}'
     for t in targets:
         if os.path.exists(os.path.expanduser(t)):
-            subprocess.call(['mv {0} {0}.old'.format(t)], shell=True)
+            run_cmd(cmd.format(t))
 
 def task_link(maps, keep):
     targets = list(maps.values())
-    if keep:
-        check_path(targets)
+    check_path(targets, keep)
 
     for f, t in maps.items():
-        subprocess.call(['ln -srfT {} {}'.format(f, t)], shell=True)
+        run_cmd('ln -srfT {} {}'.format(f, t))
 
 def task_copy(maps, keep):
     targets = list(maps.values())
-    if keep:
-        check_path(targets)
+    check_path(targets, keep)
 
     for f, t in maps.items():
-        subprocess.call(['cp {} {}'.format(f, t)], shell=True)
+        run_cmd('cp {} {}'.format(f, t))
 
 def task_git(keep):
     gitmap = {'.gitconfig': '~/.gitconfig'}
@@ -75,3 +80,5 @@ if __name__ == '__main__':
         task_font(args.keep)
     elif args.target == "tmux":
         task_tmux(args.keep)
+    else:
+        parser.print_help()
