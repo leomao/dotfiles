@@ -43,6 +43,10 @@ RPROMPT="%{$fg[magenta]%}%(?..[%?] )%{$reset_color%}"
 # Bind Key
 #############################
 bindkey -v
+bindkey "^W" backward-kill-word    # vi-backward-kill-word
+bindkey "^H" backward-delete-char  # vi-backward-delete-char
+bindkey "^U" backward-kill-line 
+bindkey "^?" backward-delete-char  # vi-backward-delete-char
 
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
