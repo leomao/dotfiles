@@ -15,6 +15,7 @@ setopt RM_STAR_WAIT
 # Directory Stack settings
 DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
+setopt AUTO_CD
 
 # Title
 case $TERM in
@@ -74,6 +75,9 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[Right]}"    ]]  && bindkey  "${key[Right]}"    forward-char
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   beginning-of-buffer-or-history
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" end-of-buffer-or-history
+
+bindkey "^R" history-beginning-search-backward
+bindkey "^F" history-beginning-search-forward
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
