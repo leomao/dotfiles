@@ -145,6 +145,7 @@ export TERM=xterm
 
 export LANG=zh_TW.UTF-8
 export LC_CTYPE=zh_TW.UTF-8
+export LC_MESSAGES=en_US.UTF-8
 
 if (( $+commands[ruby] )) ; then
   PATH="`ruby -rubygems -e 'puts Gem.user_dir'`/bin:$PATH"
