@@ -157,3 +157,4 @@ if (( $+commands[npm] )) ; then
   export npm_config_prefix=~/.node_modules
   # eval "$(npm completion 2>/dev/null)"
 fi
+
