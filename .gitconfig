@@ -1,36 +1,39 @@
 [user]
-    name = <YourName>
-    email = <YourEmail>
+  name = <YourName>
+  email = <YourEmail>
 [alias]
-    ph = push
-    pl = pull
-    ci = commit
-    rb = rebase
-    chp = cherry-pick
-    st = status -sb
-    fc = fetch 
-    mg = merge
-    mt = mergetool
-    br = branch
-    co = checkout
-    ss = stash
-    df = diff
-    dt = difftool
-    la = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative --all
-    lb = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative --branches
-    lg = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative
-    ls = ls-files
+  ph = push
+  pl = pull
+  ci = commit
+  rb = rebase
+  chp = cherry-pick
+  st = status -sb
+  fc = fetch 
+  mg = merge
+  mt = mergetool
+  br = branch
+  bl = blame
+  co = checkout
+  rv = revert
+  rs = reset
+  ss = stash
+  df = diff
+  dt = difftool
+  la = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative --all
+  lb = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative --branches
+  lg = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative
+  ls = ls-files
 [push]
-    default = tracking
+  default = tracking
 [branch]
-    autosetuprebase = always
+  autosetuprebase = always
 [color]
-    ui = true
+  ui = true
 [diff]
-    tool = vimdiff
+  tool = vimdiff
 [difftool]
-    prompt = false
+  prompt = false
 [merge]
-    tool = vimdiff
+  tool = vimdiff
 [mergetool]
-	keepBackup = false
+  keepBackup = false

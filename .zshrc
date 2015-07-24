@@ -1,6 +1,14 @@
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
 
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  SSH_REMOTE=remote/ssh
+else
+  case $(ps -o comm= -p $PPID) in
+    sshd|*/sshd) SSH_REMOTE=remote/ssh;;
+  esac
+fi
+
 # don't record duplicate history
 setopt HIST_IGNORE_DUPS
 
@@ -14,8 +22,8 @@ setopt RM_STAR_WAIT
 
 # Directory Stack settings
 DIRSTACKSIZE=8
-setopt autopushd pushdminus pushdsilent pushdtohome
 setopt AUTO_CD
+setopt autopushd pushdminus pushdsilent pushdtohome
 
 # Title
 case $TERM in
@@ -37,8 +45,13 @@ esac
 autoload -U promptinit && promptinit
 autoload -U colors && colors
 #prompt walters
-PROMPT="%n@%{$fg[red]%}%m %{$reset_color%}in %{$fg[green]%}%3~ 
+if [[ -n "$SSH_REMOTE" ]]; then
+  PROMPT="%n@%{$fg[red]%}%m %{$fg[cyan]%}(ssh) %{$reset_color%}in %{$fg[green]%}%3~ 
 %{$fg[blue]%}%# %{$reset_color%}>> "
+else
+  PROMPT="%n@%{$fg[red]%}%m %{$reset_color%}in %{$fg[green]%}%3~ 
+%{$fg[blue]%}%# %{$reset_color%}>> "
+fi
 RPROMPT="%{$fg[magenta]%}%(?..[%?] )%{$reset_color%}"
 #############################
 # Bind Key
@@ -141,7 +154,7 @@ compinit
 #Env settings
 
 export EDITOR="vim"
-export TERM=xterm
+# export TERM=xterm
 
 export LANG=zh_TW.UTF-8
 export LC_CTYPE=zh_TW.UTF-8
