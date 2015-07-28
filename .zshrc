@@ -128,8 +128,6 @@ alias tmux='tmux -2'
 alias dirs="dirs -v"
 alias ds="dirs"
 
-[[ -f ~/.zsh_custom ]] && . ~/.zsh_custom
-
 #############################
 # Completion
 #############################
@@ -170,4 +168,10 @@ if (( $+commands[npm] )) ; then
   export npm_config_prefix=~/.node_modules
   # eval "$(npm completion 2>/dev/null)"
 fi
+
+# enable fuzzy finder if exists
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# load custom settings
+[[ -f ~/.zsh_custom ]] && . ~/.zsh_custom
 
