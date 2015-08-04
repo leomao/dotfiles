@@ -173,5 +173,7 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # load custom settings
-[[ -f ~/.zsh_custom ]] && . ~/.zsh_custom
+[ -f ~/.zsh_custom ] && . ~/.zsh_custom
+
+return 0
 
