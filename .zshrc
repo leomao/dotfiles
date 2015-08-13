@@ -152,11 +152,6 @@ compinit
 #Env settings
 
 export EDITOR="vim"
-# export TERM=xterm
-
-export LANG=zh_TW.UTF-8
-export LC_CTYPE=zh_TW.UTF-8
-export LC_MESSAGES=en_US.UTF-8
 
 if (( $+commands[ruby] )) ; then
   PATH="`ruby -rubygems -e 'puts Gem.user_dir'`/bin:$PATH"
@@ -170,10 +165,13 @@ if (( $+commands[npm] )) ; then
 fi
 
 # enable fuzzy finder if exists
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ -f ~/.fzf.zsh ]] ; then
+  source ~/.fzf.zsh
+  export FZF_DEFAULT_OPTS="-x -m --cycle"
+fi
 
 # load custom settings
-[ -f ~/.zsh_custom ] && . ~/.zsh_custom
+[[ -f ~/.zsh_custom ]] && source ~/.zsh_custom
 
 return 0
 

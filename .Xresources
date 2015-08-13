@@ -1,0 +1,17 @@
+! Xft settings ---------------------------------------------------------------
+
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+! Term settings
+XTerm*termName: xterm-256color
+! ! Use a nice truetype font and size by default... 
+
+! ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
+! xterm*loginshell: true
+
+! ! I like a LOT of scrollback...
+! xterm*savelines: 16384
