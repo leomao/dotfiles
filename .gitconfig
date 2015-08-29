@@ -1,6 +1,8 @@
 [user]
   name = <YourName>
   email = <YourEmail>
+[core]
+  excludesfile = ~/.gitignore
 [alias]
   ph = push
   pl = pull

@@ -7,7 +7,7 @@ import re
 CHOICES = {
     'zsh': {'.zshrc': '~/.zshrc'},
     'tmux': {'.tmux.conf': '~/.tmux.conf'},
-    'git': {'.gitconfig': '~/.gitconfig'},
+    'git': {'.gitconfig': '~/.gitconfig', '.gitignore': '~/.gitignore'},
     'font': {'fontconfig': '~/.config/fontconfig'},
     'Xres': {'.Xresources': '~/.Xresources'},
 }
