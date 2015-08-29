@@ -1,6 +1,7 @@
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
 
+# show (ssh) if this shell is interacted via ssh
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   SSH_REMOTE=remote/ssh
 else
@@ -13,8 +14,6 @@ fi
 setopt HIST_IGNORE_DUPS
 
 # no flow control
-stty stop undef
-stty start undef
 setopt noflowcontrol
 
 # rm confirmation
@@ -148,8 +147,6 @@ zstyle :compinstall filename '/home/leomao/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-
-#Env settings
 
 export EDITOR="vim"
 
