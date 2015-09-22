@@ -43,14 +43,10 @@ esac
 # Prompt
 autoload -U promptinit && promptinit
 autoload -U colors && colors
-#prompt walters
-if [[ -n "$SSH_REMOTE" ]]; then
-  PROMPT="%n@%{$fg[red]%}%m %{$fg[cyan]%}(ssh) %{$reset_color%}in %{$fg[green]%}%3~ 
+#prompt customization
+[[ -n "$SSH_REMOTE" ]] && SSH_PROMPT="%{$fg[cyan]%}(ssh)"
+PROMPT="%n@%{$fg[red]%}%m ${ssh_prompt} %{$reset_color%}in %{$fg[green]%}%3~ 
 %{$fg[blue]%}%# %{$reset_color%}>> "
-else
-  PROMPT="%n@%{$fg[red]%}%m %{$reset_color%}in %{$fg[green]%}%3~ 
-%{$fg[blue]%}%# %{$reset_color%}>> "
-fi
 RPROMPT="%{$fg[magenta]%}%(?..[%?] )%{$reset_color%}"
 #############################
 # Bind Key
@@ -139,7 +135,7 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' list-suffixes true
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} r:|[._-]=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
-zstyle ':completion:*' menu select=0
+zstyle ':completion:*' menu select
 zstyle ':completion:*' preserve-prefix '//[^/]##/'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle :compinstall filename '/home/leomao/.zshrc'
@@ -148,8 +144,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-export EDITOR="vim"
-
+#############################
+# Path settings
+#############################
 if (( $+commands[ruby] )) ; then
   PATH="`ruby -rubygems -e 'puts Gem.user_dir'`/bin:$PATH"
   export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
@@ -160,6 +157,8 @@ if (( $+commands[npm] )) ; then
   export npm_config_prefix=~/.node_modules
   # eval "$(npm completion 2>/dev/null)"
 fi
+
+export EDITOR="vim"
 
 # enable fuzzy finder if exists
 if [[ -f ~/.fzf.zsh ]] ; then
