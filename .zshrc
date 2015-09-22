@@ -44,8 +44,8 @@ esac
 autoload -U promptinit && promptinit
 autoload -U colors && colors
 #prompt customization
-[[ -n "$SSH_REMOTE" ]] && SSH_PROMPT="%{$fg[cyan]%}(ssh)"
-PROMPT="%n@%{$fg[red]%}%m ${ssh_prompt} %{$reset_color%}in %{$fg[green]%}%3~ 
+[[ -n "$SSH_REMOTE" ]] && SSH_PROMPT="%{$fg[cyan]%}(ssh) "
+PROMPT="%n@%{$fg[red]%}%m ${SSH_PROMPT}%{$reset_color%}in %{$fg[green]%}%3~ 
 %{$fg[blue]%}%# %{$reset_color%}>> "
 RPROMPT="%{$fg[magenta]%}%(?..[%?] )%{$reset_color%}"
 #############################
