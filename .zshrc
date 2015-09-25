@@ -164,6 +164,7 @@ export EDITOR="vim"
 if [[ -f ~/.fzf.zsh ]] ; then
   source ~/.fzf.zsh
   export FZF_DEFAULT_OPTS="-x -m --cycle"
+  (( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
 fi
 
 # load custom settings
