@@ -119,6 +119,9 @@ alias history='fc -l 1'
 # Tmux 256 default
 alias tmux='tmux -2'
 
+# vi as vim
+alias vi='vim'
+
 # Directory Stack alias
 alias dirs="dirs -v"
 alias ds="dirs"
