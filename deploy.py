@@ -18,6 +18,11 @@ DEFAULT = [
     'git',
 ]
 
+FILE_PATH = os.path.dirname(os.path.realpath(__file__))
+CMD_LN = 'ln -srfT {} {}'
+if sys.platform == 'darwin':
+    CMD_LN = 'ln -sf {} {}'
+
 parser = argparse.ArgumentParser(description='Deploy config files.',
                                  formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument('-k', '--keep', action='store_true',
@@ -73,13 +78,14 @@ class ConfigDeployer:
 
             print('deploying {}...'.format(target))
             if self.methods[target] == 'LINK':
-                cmd = 'ln -srfT {} {}' 
+                cmd = CMD_LN
             elif self.methods[target] == 'COPY':
                 cmd = 'cp -rf {} {}'
             dests = list(self.choices[target].values())
             self.check_path(dests)
 
             for f, t in self.choices[target].items():
+                f = os.path.join(FILE_PATH, f)
                 self.run_cmd(cmd.format(f, t))
 
             if self.hooks[target]:
