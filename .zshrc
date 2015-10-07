@@ -10,8 +10,11 @@ else
   esac
 fi
 
+# enable auto correction
+setopt correctall
+
 # don't record duplicate history
-setopt HIST_IGNORE_DUPS
+setopt hist_ignore_dups
 
 # no flow control
 setopt noflowcontrol
@@ -138,7 +141,7 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' list-suffixes true
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} r:|[._-]=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
-zstyle ':completion:*' menu select
+#zstyle ':completion:*' menu select
 zstyle ':completion:*' preserve-prefix '//[^/]##/'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle :compinstall filename '/home/leomao/.zshrc'
