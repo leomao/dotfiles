@@ -10,9 +10,6 @@ else
   esac
 fi
 
-# enable auto correction
-setopt correctall
-
 # don't record duplicate history
 setopt hist_ignore_dups
 
@@ -20,11 +17,11 @@ setopt hist_ignore_dups
 setopt noflowcontrol
 
 # rm confirmation
-setopt RM_STAR_WAIT
+setopt rm_star_wait
 
 # Directory Stack settings
 DIRSTACKSIZE=8
-setopt AUTO_CD
+setopt auto_cd
 setopt autopushd pushdminus pushdsilent pushdtohome
 
 # Title
