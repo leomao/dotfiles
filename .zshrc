@@ -1,15 +1,22 @@
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
 
-# show (ssh) if this shell is interacted via ssh
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  SSH_REMOTE=remote/ssh
-else
-  case $(ps -o comm= -p $PPID) in
-    sshd|*/sshd) SSH_REMOTE=remote/ssh;;
-  esac
-fi
+export EDITOR="vim"
 
+#############################
+# Functions
+#############################
+# return the name of the distro
+function get_distro() {
+  if (( $+commands[lsb_release] )) ; then
+    echo $(lsb_release -a | sed -rn 's/[^:]*:\t//g;2p')
+  fi
+  return ""
+}
+
+#############################
+# Options
+#############################
 # don't record duplicate history
 setopt hist_ignore_dups
 
@@ -24,30 +31,6 @@ DIRSTACKSIZE=8
 setopt auto_cd
 setopt autopushd pushdminus pushdsilent pushdtohome
 
-# Title
-case $TERM in
-sun-cmd)
-precmd () { print -Pn "\e]l%~\e\\" }
-preexec () { print -Pn "\e]l%~\e\\" }
-;;
-*xterm*|rxvt|(dt|k|E)term)
-precmd () { print -Pn "\e]2;%n@%m:%~\a" }
-preexec () { print -Pn "\e]2;%n@%m:%~\a" }
-;;
-screen*)
-precmd () { print -Pn "\e]2;%n@%m:%~\a" }
-preexec () { print -Pn "\e]2;%n@%m:%~\a" }
-;;
-esac
-
-# Prompt
-autoload -U promptinit && promptinit
-autoload -U colors && colors
-#prompt customization
-[[ -n "$SSH_REMOTE" ]] && SSH_PROMPT="%{$fg[cyan]%}(ssh) "
-PROMPT="%n@%{$fg[red]%}%m ${SSH_PROMPT}%{$reset_color%}in %{$fg[green]%}%3~ 
-%{$fg[blue]%}%# %{$reset_color%}>> "
-RPROMPT="%{$fg[magenta]%}%(?..[%?] )%{$reset_color%}"
 #############################
 # Bind Key
 #############################
@@ -138,40 +121,65 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' list-suffixes true
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} r:|[._-]=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
-#zstyle ':completion:*' menu select
+zstyle ':completion:*' menu select=long-list
 zstyle ':completion:*' preserve-prefix '//[^/]##/'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle :compinstall filename '/home/leomao/.zshrc'
 
-autoload -Uz compinit
-compinit
 # End of lines added by compinstall
 
 #############################
 # Path settings
 #############################
 if (( $+commands[ruby] )) ; then
-  PATH="`ruby -rubygems -e 'puts Gem.user_dir'`/bin:$PATH"
-  export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+  if [[ -d ~/.rbenv ]] ; then
+    # use rbenv if it exists
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+  elif [[ "Arch" == $(get_distro) ]] ; then
+    # According to https://wiki.archlinux.org/index.php/Ruby#RubyGems
+    export PATH="`ruby -rubygems -e 'puts Gem.user_dir'`/bin:$PATH"
+    export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+  fi
 fi
 
 if (( $+commands[npm] )) ; then
-  PATH=~/.node_modules/bin:$PATH
+  export PATH="$HOME/.node_modules/bin:$PATH"
   export npm_config_prefix=~/.node_modules
-  # eval "$(npm completion 2>/dev/null)"
+  local NPM_COMPLETION=/usr/lib/node_modules/npm/lib/utils/completion.sh
+  if [[ -f ${NPM_COMPLETION} ]]; then
+    source ${NPM_COMPLETION}
+  fi
 fi
 
-export EDITOR="vim"
-
-# enable fuzzy finder if exists
+#############################
+# Load plugins
+#############################
+# enable fuzzy finder if it exists
 if [[ -f ~/.fzf.zsh ]] ; then
   source ~/.fzf.zsh
   export FZF_DEFAULT_OPTS="-x -m --cycle"
   (( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
 fi
 
+if ![[ -f "${HOME}/.zgen/zgen.zsh" ]]; then
+  git clone --depth=1 https://github.com/leomao/zgen.git "${HOME}/.zgen"
+fi
+source "${HOME}/.zgen/zgen.zsh"
+
+# check if there's no init script
+if ! zgen saved; then
+
+    zgen load mafredri/zsh-async
+    zgen load leomao/pure
+    zgen load zsh-users/zsh-completions src
+    zgen load zsh-users/zsh-syntax-highlighting
+
+    # save all to init script
+    zgen save
+fi
+
 # load custom settings
-[[ -f ~/.zsh_custom ]] && source ~/.zsh_custom
+[[ -f ~/.zshrc_custom ]] && source ~/.zshrc_custom
 
 return 0
 
