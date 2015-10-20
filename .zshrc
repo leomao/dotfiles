@@ -4,17 +4,6 @@
 export EDITOR="vim"
 
 #############################
-# Functions
-#############################
-# return the name of the distro
-function get_distro() {
-  if (( $+commands[lsb_release] )) ; then
-    echo $(lsb_release -a | sed -rn 's/[^:]*:\t//g;2p')
-  fi
-  return ""
-}
-
-#############################
 # Options
 #############################
 # don't record duplicate history
@@ -35,7 +24,12 @@ setopt autopushd pushdminus pushdsilent pushdtohome
 # Bind Key
 #############################
 bindkey -v
-bindkey "^W" backward-kill-word    # vi-backward-kill-word
+dir-backward-delete-word() {
+  local WORDCHARS="${WORDCHARS:s#/#}"
+  zle backward-delete-word
+}
+zle -N dir-backward-delete-word
+bindkey "^W" dir-backward-delete-word    # vi-backward-kill-word
 bindkey "^H" backward-delete-char  # vi-backward-delete-char
 bindkey "^U" backward-kill-line 
 bindkey "^?" backward-delete-char  # vi-backward-delete-char
@@ -135,20 +129,16 @@ if (( $+commands[ruby] )) ; then
     # use rbenv if it exists
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
-  elif [[ "Arch" == $(get_distro) ]] ; then
+  else
     # According to https://wiki.archlinux.org/index.php/Ruby#RubyGems
-    export PATH="`ruby -rubygems -e 'puts Gem.user_dir'`/bin:$PATH"
     export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+    export PATH="${GEM_HOME}/bin:$PATH"
   fi
 fi
 
 if (( $+commands[npm] )) ; then
   export PATH="$HOME/.node_modules/bin:$PATH"
   export npm_config_prefix=~/.node_modules
-  local NPM_COMPLETION=/usr/lib/node_modules/npm/lib/utils/completion.sh
-  if [[ -f ${NPM_COMPLETION} ]]; then
-    source ${NPM_COMPLETION}
-  fi
 fi
 
 #############################
@@ -161,7 +151,7 @@ if [[ -f ~/.fzf.zsh ]] ; then
   (( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
 fi
 
-if ![[ -f "${HOME}/.zgen/zgen.zsh" ]]; then
+if ! [[ -f "${HOME}/.zgen/zgen.zsh" ]]; then
   git clone --depth=1 https://github.com/leomao/zgen.git "${HOME}/.zgen"
 fi
 source "${HOME}/.zgen/zgen.zsh"
