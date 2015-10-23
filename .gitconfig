@@ -4,6 +4,8 @@
 [core]
   excludesfile = ~/.gitignore
 [alias]
+  cl = clone
+  rmo = remote
   ph = push
   pl = pull
   ci = commit

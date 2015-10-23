@@ -10,6 +10,7 @@ tags
 *.exe
 *.o
 *.so
+*.a
 
 # Packages #
 ############
@@ -30,3 +31,30 @@ tags
 *.sql
 *.sqlite
 *.sqlite3
+
+# LaTeX specific #
+##################
+
+*.pdf
+*.aux
+*.glo
+*.idx
+*.toc
+*.ist
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtc1
+*.out
+*.synctex.gz

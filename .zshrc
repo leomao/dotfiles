@@ -156,17 +156,14 @@ if ! [[ -f "${HOME}/.zgen/zgen.zsh" ]]; then
 fi
 source "${HOME}/.zgen/zgen.zsh"
 
-# check if there's no init script
-if ! zgen saved; then
+zgen load mafredri/zsh-async
+zgen load leomao/pure
+zgen load zsh-users/zsh-completions src
 
-    zgen load mafredri/zsh-async
-    zgen load leomao/pure
-    zgen load zsh-users/zsh-completions src
-    zgen load zsh-users/zsh-syntax-highlighting
+zgen compinit
 
-    # save all to init script
-    zgen save
-fi
+# must load at the end for zle widget be set properly
+zgen load zsh-users/zsh-syntax-highlighting
 
 # load custom settings
 [[ -f ~/.zshrc_custom ]] && source ~/.zshrc_custom
