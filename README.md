@@ -20,3 +20,7 @@ using zgen.
 - [zsh-completions](https://github.com/zsh-users/zsh-completions)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
+## Tmux
+
+Since tmux 2.1 has some backward imcompatible changes, the configuration
+only works for tmux 2.1.
