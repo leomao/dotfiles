@@ -20,6 +20,7 @@
   co = checkout
   rv = revert
   rs = reset
+  us = reset HEAD -- # unstage
   ss = stash
   df = diff
   dt = difftool
