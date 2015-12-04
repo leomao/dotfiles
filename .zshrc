@@ -151,19 +151,24 @@ if [[ -f ~/.fzf.zsh ]] ; then
   (( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
 fi
 
-if ! [[ -f "${HOME}/.zgen/zgen.zsh" ]]; then
-  git clone --depth=1 https://github.com/leomao/zgen.git "${HOME}/.zgen"
+if ! [[ -f "${HOME}/.zplug/zplug" ]]; then
+  curl -fLo "${HOME}/.zplug/zplug" --create-dirs https://git.io/zplug
 fi
-source "${HOME}/.zgen/zgen.zsh"
+source "${HOME}/.zplug/zplug"
 
-zgen load mafredri/zsh-async
-zgen load leomao/pure
-zgen load zsh-users/zsh-completions src
+zplug "zsh-users/zsh-completions", of:"*.plugin.zsh", nice:-20
+zplug "mafredri/zsh-async", of:"*.plugin.zsh", nice:-10
+zplug "leomao/pure", of:"*.plugin.zsh"
+zplug "zsh-users/zsh-syntax-highlighting", of:"*.plugin.zsh", nice:19
 
-zgen compinit
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
 
-# must load at the end for zle widget be set properly
-zgen load zsh-users/zsh-syntax-highlighting
+zplug load
 
 # load custom settings
 if [[ -f ~/.zshrc_custom ]]; then

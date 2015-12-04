@@ -9,7 +9,7 @@ $ ./deploy.py -h
 
 ## Zsh
 
-using zgen.
+using [zplug](https://github.com/b4b4r07/zplug).
 
 ### prompt theme:
 [pure](https://github.com/leomao/pure)
