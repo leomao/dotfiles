@@ -166,7 +166,6 @@ zgen compinit
 zgen load zsh-users/zsh-syntax-highlighting
 
 # load custom settings
-[[ -f ~/.zshrc_custom ]] && source ~/.zshrc_custom
-
-return 0
-
+if [[ -f ~/.zshrc_custom ]]; then
+  source ~/.zshrc_custom
+fi
