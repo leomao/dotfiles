@@ -43,4 +43,4 @@
 [mergetool]
   keepBackup = false
 [include]
-  path = ~/.git_custom
+  path = ~/.gitcustom

@@ -147,7 +147,7 @@ fi
 # enable fuzzy finder if it exists
 if [[ -f ~/.fzf.zsh ]] ; then
   source ~/.fzf.zsh
-  export FZF_DEFAULT_OPTS="-x -m --cycle"
+  export FZF_DEFAULT_OPTS="-m --cycle"
   (( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
 fi
 

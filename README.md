@@ -23,4 +23,8 @@ using [zplug](https://github.com/b4b4r07/zplug).
 ## Tmux
 
 Since tmux 2.1 has some backward imcompatible changes, the configuration
-only works for tmux 2.1.
+only works for tmux 2.1 and above.
+
+## Git
+
+One can add custom settings in `~/.gitcustom`.
