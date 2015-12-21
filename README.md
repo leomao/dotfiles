@@ -23,8 +23,22 @@ using [zplug](https://github.com/b4b4r07/zplug).
 ## Tmux
 
 Since tmux 2.1 has some backward imcompatible changes, the configuration
-only works for tmux 2.1 and above.
+only works with tmux 2.1 and above.
 
 ## Git
 
 One can add custom settings in `~/.gitcustom`.
+
+## Fontconfig
+
+This fontconfig is for Traditional Chinese users on Archlinux primarily.
+It's not tested on other distros. But it should work on other distros as well
+so long as you have the following:
+
+- one of "Source Han Sans TW", "Source Han Sans TC", "Noto Sans CJK TC"
+- "Source Code Pro" or "Inconsolata"
+
+For Archlinux users, you can just install required fonts by
+```
+# pacman -S adobe-source-code-pro-fonts adobe-source-han-sans-tw-fonts
+```

@@ -152,7 +152,8 @@ if [[ -f ~/.fzf.zsh ]] ; then
 fi
 
 if ! [[ -f "${HOME}/.zplug/zplug" ]]; then
-  curl -fLo "${HOME}/.zplug/zplug" --create-dirs https://git.io/zplug
+  echo "Downloading zplug..."
+  curl --progress-bar -fLo "${HOME}/.zplug/zplug" --create-dirs https://git.io/zplug
 fi
 source "${HOME}/.zplug/zplug"
 
