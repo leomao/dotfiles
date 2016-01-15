@@ -48,7 +48,7 @@ alias ds="dirs"
 # Completions
 #############################
 # Important
-zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*:default' menu yes=long select=2
 
 # Completing Groping
 zstyle ':completion:*:options' description 'yes'
@@ -56,12 +56,14 @@ zstyle ':completion:*:descriptions' format '%F{226}Completing %F{214}%d%f'
 zstyle ':completion:*' group-name ''
 
 # Completing misc
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} r:|[._-]=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+zstyle ':completion:*' expand prefix suffix
 zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 
 # Directory
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
