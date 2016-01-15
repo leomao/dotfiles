@@ -1,8 +1,6 @@
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
 
-export EDITOR="vim"
-
 #############################
 # Options
 #############################
@@ -21,71 +19,16 @@ setopt auto_cd
 setopt autopushd pushdminus pushdsilent pushdtohome
 
 #############################
-# Bind Key
-#############################
-bindkey -v
-dir-backward-delete-word() {
-  local WORDCHARS="${WORDCHARS:s#/#}"
-  zle backward-delete-word
-}
-zle -N dir-backward-delete-word
-bindkey "^W" dir-backward-delete-word    # vi-backward-kill-word
-bindkey "^H" backward-delete-char  # vi-backward-delete-char
-bindkey "^U" backward-kill-line 
-bindkey "^?" backward-delete-char  # vi-backward-delete-char
-
-# create a zkbd compatible hash;
-# to add other keys to this hash, see: man 5 terminfo
-typeset -A key
-
-key[Home]=${terminfo[khome]}
-key[End]=${terminfo[kend]}
-key[Insert]=${terminfo[kich1]}
-key[Delete]=${terminfo[kdch1]}
-key[Up]=${terminfo[kcuu1]}
-key[Down]=${terminfo[kcud1]}
-key[Left]=${terminfo[kcub1]}
-key[Right]=${terminfo[kcuf1]}
-key[PageUp]=${terminfo[kpp]}
-key[PageDown]=${terminfo[knp]}
-
-# setup key accordingly
-[[ -n "${key[Home]}"     ]]  && bindkey  "${key[Home]}"     beginning-of-line
-[[ -n "${key[End]}"      ]]  && bindkey  "${key[End]}"      end-of-line
-[[ -n "${key[Insert]}"   ]]  && bindkey  "${key[Insert]}"   overwrite-mode
-[[ -n "${key[Delete]}"   ]]  && bindkey  "${key[Delete]}"   delete-char
-[[ -n "${key[Up]}"       ]]  && bindkey  "${key[Up]}"       up-line-or-history
-[[ -n "${key[Down]}"     ]]  && bindkey  "${key[Down]}"     down-line-or-history
-[[ -n "${key[Left]}"     ]]  && bindkey  "${key[Left]}"     backward-char
-[[ -n "${key[Right]}"    ]]  && bindkey  "${key[Right]}"    forward-char
-[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   beginning-of-buffer-or-history
-[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" end-of-buffer-or-history
-
-bindkey "^R" history-beginning-search-backward
-bindkey "^F" history-beginning-search-forward
-
-# Finally, make sure the terminal is in application mode, when zle is
-# active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-    function zle-line-init () {
-        printf '%s' "${terminfo[smkx]}"
-    }
-    function zle-line-finish () {
-        printf '%s' "${terminfo[rmkx]}"
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
-fi
-
-#############################
-# Alias
+# Aliases
 #############################
 # List direcory contents
-alias ls='ls --color --group-directories-first'
+alias ls='ls -h --color --group-directories-first'
 alias l='ls -F'
-alias ll='ls -lhF'
-alias la='ls -lhAF'
-alias lt='ls -lhtAF'
+alias ll='ls -lF'
+alias la='ls -lAF'
+alias lx='ls -lXB'
+alias lk='ls -lSr'
+alias lt='ls -lAFtr'
 alias sl=ls # often screw this up
 
 alias less='less -R'
@@ -104,9 +47,8 @@ alias dirs="dirs -v"
 alias ds="dirs"
 
 #############################
-# Completion
+# Completions
 #############################
-# The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' expand prefix suffix
@@ -118,28 +60,6 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} r:|[._-]=* r:|
 zstyle ':completion:*' menu select=long-list
 zstyle ':completion:*' preserve-prefix '//[^/]##/'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-
-# End of lines added by compinstall
-
-#############################
-# Path settings
-#############################
-if (( $+commands[ruby] )) ; then
-  if [[ -d ~/.rbenv ]] ; then
-    # use rbenv if it exists
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
-  else
-    # According to https://wiki.archlinux.org/index.php/Ruby#RubyGems
-    export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
-    export PATH="${GEM_HOME}/bin:$PATH"
-  fi
-fi
-
-if (( $+commands[npm] )) ; then
-  export PATH="$HOME/.node_modules/bin:$PATH"
-  export npm_config_prefix=~/.node_modules
-fi
 
 #############################
 # Load plugins
@@ -157,10 +77,12 @@ if ! [[ -f "${HOME}/.zplug/zplug" ]]; then
 fi
 source "${HOME}/.zplug/zplug"
 
-zplug "zsh-users/zsh-completions", of:"*.plugin.zsh", nice:-20
-zplug "mafredri/zsh-async", of:"*.plugin.zsh", nice:-10
-zplug "leomao/pure", of:"*.plugin.zsh"
-zplug "zsh-users/zsh-syntax-highlighting", of:"*.plugin.zsh", nice:19
+zplug "mafredri/zsh-async", of:"*.plugin.zsh", nice:-20
+zplug "leomao/zsh-hooks", of:"*.plugin.zsh", nice:-20
+zplug "zsh-users/zsh-completions", of:"*.plugin.zsh", nice:-10
+zplug "leomao/vim.zsh", of:vim.zsh
+zplug "leomao/pika-prompt", of:pika-prompt.zsh
+zplug "zsh-users/zsh-syntax-highlighting", of:"*.plugin.zsh", nice:15
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "

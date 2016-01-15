@@ -5,7 +5,7 @@ import os, os.path, sys, subprocess
 import re
 
 CHOICES = {
-    'zsh': {'.zshrc': '~/.zshrc'},
+    'zsh': {'.zshrc': '~/.zshrc', '.zshenv': '~/.zshenv'},
     'tmux': {'.tmux.conf': '~/.tmux.conf'},
     'git': {'.gitconfig': '~/.gitconfig', '.gitignore': '~/.gitignore'},
     'font': {'fontconfig': '~/.config/fontconfig'},
