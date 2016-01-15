@@ -31,8 +31,6 @@ alias lk='ls -lSr'
 alias lt='ls -lAFtr'
 alias sl=ls # often screw this up
 
-alias less='less -R'
-
 # Show history
 alias history='fc -l 1'
 
@@ -49,17 +47,37 @@ alias ds="dirs"
 #############################
 # Completions
 #############################
+# Important
+zstyle ':completion:*:default' menu select=2
 
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
-zstyle ':completion:*' expand prefix suffix
+# Completing Groping
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:descriptions' format '%F{226}Completing %F{214}%d%f'
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' list-suffixes true
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} r:|[._-]=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
-zstyle ':completion:*' menu select=long-list
-zstyle ':completion:*' preserve-prefix '//[^/]##/'
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+
+# Completing misc
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+
+# Directory
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+export LS_COLORS='di=01;94:ln=01;96:ex=01;92'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# default: --
+zstyle ':completion:*' list-separator '-->'
+zstyle ':completion:*:manuals' separate-sections true
+
+# Menu select
+zmodload -i zsh/complist
+bindkey -M menuselect '^h' vi-backward-char
+bindkey -M menuselect '^j' vi-down-line-or-history
+bindkey -M menuselect '^k' vi-up-line-or-history
+bindkey -M menuselect '^l' vi-forward-char
 
 #############################
 # Load plugins

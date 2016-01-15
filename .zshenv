@@ -6,7 +6,7 @@ export KEYTIMEOUT=1
 export EDITOR="vim"
 
 # less
-export LESS='-R -f -X -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
+export LESS='-RfFXi -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
 export LESSCHARSET='utf-8'
 
 if (( $+commands[ruby] )) ; then
