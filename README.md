@@ -1,6 +1,6 @@
-# Config pika
+# dotfiles of pika
 
-My personal config files.
+My personal dotfiles.
 
 ## How to deploy
 ```
@@ -12,13 +12,19 @@ $ ./deploy.py -h
 using [zplug](https://github.com/b4b4r07/zplug).
 
 ### prompt theme:
-[pure](https://github.com/leomao/pure)
+[pika-prompt](https://github.com/leomao/pika-prompt)
 
 ### plugins:
 
+- [zsh-hooks](https://github.com/leomao/zsh-hooks)
 - [zsh-async](https://github.com/mafredri/zsh-async)
+- [vim.zsh](https://github.com/leomao/vim.zsh)
 - [zsh-completions](https://github.com/zsh-users/zsh-completions)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+
+### Customization
+
+Put your customization in `.zshenv_custom` and `.zshrc_custom`.
 
 ## Tmux
 
