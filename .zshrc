@@ -99,9 +99,11 @@ source "${HOME}/.zplug/zplug"
 
 zplug "mafredri/zsh-async", of:"*.plugin.zsh", nice:-20
 zplug "leomao/zsh-hooks", of:"*.plugin.zsh", nice:-20
-zplug "zsh-users/zsh-completions", of:"*.plugin.zsh", nice:-10
-zplug "leomao/vim.zsh", of:vim.zsh
+zplug "zsh-users/zsh-completions", of:"*.plugin.zsh", nice:-20
+zplug "leomao/vim.zsh", of:vim.zsh, nice:-5
 zplug "leomao/pika-prompt", of:pika-prompt.zsh
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 zplug "zsh-users/zsh-syntax-highlighting", of:"*.plugin.zsh", nice:15
 
 if ! zplug check --verbose; then
