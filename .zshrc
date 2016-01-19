@@ -74,13 +74,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
 
-# Menu select
-zmodload -i zsh/complist
-bindkey -M menuselect '^h' vi-backward-char
-bindkey -M menuselect '^j' vi-down-line-or-history
-bindkey -M menuselect '^k' vi-up-line-or-history
-bindkey -M menuselect '^l' vi-forward-char
-
 #############################
 # Load plugins
 #############################

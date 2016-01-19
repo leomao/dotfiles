@@ -9,6 +9,8 @@ $ ./deploy.py -h
 
 ## Zsh
 
+Need zsh 5.2+
+
 using [zplug](https://github.com/b4b4r07/zplug).
 
 ### prompt theme:
