@@ -19,12 +19,17 @@ zplug "leomao/zsh-hooks", of:"*.plugin.zsh", nice:-20
 zplug "zsh-users/zsh-completions", of:"*.plugin.zsh", nice:-20
 zplug "leomao/vim.zsh", of:vim.zsh, nice:-5
 zplug "leomao/pika-prompt", of:pika-prompt.zsh
+
+touch ~/.z # ensure that ~/.z exists
 zplug "rupa/z", of:z.sh
+
 zplug "so-fancy/diff-so-fancy", as:command
-zplug "knu/zsh-manydots-magic", of:manydots-magic, nice:16
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 zplug "zsh-users/zsh-syntax-highlighting", of:"*.plugin.zsh", nice:15
+# should be sourced after syntax-highlighting
+# because this wraps zle backword-char widget
+zplug "knu/zsh-manydots-magic", of:manydots-magic, nice:16
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
