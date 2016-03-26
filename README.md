@@ -23,10 +23,13 @@ using [zplug](https://github.com/b4b4r07/zplug).
 - [vim.zsh](https://github.com/leomao/vim.zsh)
 - [zsh-completions](https://github.com/zsh-users/zsh-completions)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- [z](https://github.com/rupa/z)
+- [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
+- [zsh-manydots-magic](https://github.com/knu/zsh-manydots-magic)
 
 ### Customization
 
-Put your customization in `.zshenv_custom` and `.zshrc_custom`.
+Put your customization in `.zshenv.local` and `.zshrc.local`.
 
 ## Tmux
 
@@ -35,7 +38,10 @@ only works with tmux 2.1 and above.
 
 ## Git
 
-One can add custom settings in `~/.gitcustom`.
+One can add custom settings in `~/.gitconfig.local`.
+Notice that this configuration use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
+as the pager of `git diff` and `git show`. If you don't want to use the
+zsh config, you should overwrite this settings in `~/.gitconfig.local`.
 
 ## Fontconfig
 

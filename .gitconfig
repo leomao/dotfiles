@@ -1,6 +1,3 @@
-[user]
-  name = <YourName>
-  email = <YourEmail>
 [core]
   excludesfile = ~/.gitignore
 [alias]
@@ -12,7 +9,7 @@
   rb = rebase
   chp = cherry-pick
   st = status -sb
-  fc = fetch 
+  fc = fetch
   mg = merge
   mt = mergetool
   br = branch
@@ -34,6 +31,18 @@
   autosetuprebase = always
 [color]
   ui = true
+[color "diff"]
+	meta = yellow bold
+	commit = green bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red 88
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 [diff]
   tool = vimdiff
 [difftool]
@@ -42,5 +51,8 @@
   tool = vimdiff
 [mergetool]
   keepBackup = false
+[pager]
+  diff = diff-so-fancy | less -RFX
+  show = diff-so-fancy | less -RFX
 [include]
-  path = ~/.gitcustom
+  path = ~/.gitconfig.local

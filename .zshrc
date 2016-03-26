@@ -1,5 +1,62 @@
-# Skip all this for non-interactive shells
-[[ -z "$PS1" ]] && return
+#############################
+# Load plugins
+#############################
+# enable fuzzy finder if it exists
+if [[ -f "~/.fzf.zsh" ]] ; then
+  source "~/.fzf.zsh"
+  export FZF_DEFAULT_OPTS="-m --cycle"
+  (( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
+fi
+
+if ! [[ -f "${HOME}/.zplug/zplug" ]]; then
+  echo "Downloading zplug..."
+  curl --progress-bar -fLo "${HOME}/.zplug/zplug" --create-dirs https://git.io/zplug
+fi
+source "${HOME}/.zplug/zplug"
+
+zplug "mafredri/zsh-async", of:"*.plugin.zsh", nice:-20
+zplug "leomao/zsh-hooks", of:"*.plugin.zsh", nice:-20
+zplug "zsh-users/zsh-completions", of:"*.plugin.zsh", nice:-20
+zplug "leomao/vim.zsh", of:vim.zsh, nice:-5
+zplug "leomao/pika-prompt", of:pika-prompt.zsh
+zplug "rupa/z", of:z.sh
+zplug "so-fancy/diff-so-fancy", as:command
+zplug "knu/zsh-manydots-magic", of:manydots-magic, nice:16
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+zplug "zsh-users/zsh-syntax-highlighting", of:"*.plugin.zsh", nice:15
+
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+zplug load
+
+#############################
+# Path
+#############################
+# Because of a bug, we set path here instead of .zshenv
+# see the notes below
+# https://wiki.archlinux.org/index.php/Zsh#Configuration_files
+if (( $+commands[ruby] )) ; then
+  if [[ -d ~/.rbenv ]] ; then
+    # use rbenv if it exists
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+  else
+    # According to https://wiki.archlinux.org/index.php/Ruby#RubyGems
+    export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+    export PATH="${GEM_HOME}/bin:$PATH"
+  fi
+fi
+
+if (( $+commands[npm] )) ; then
+  export PATH="$HOME/.node_modules/bin:$PATH"
+  export npm_config_prefix=~/.node_modules
+fi
 
 #############################
 # Options
@@ -39,10 +96,15 @@ alias tmux='tmux -2'
 
 # vi as vim
 alias vi='vim'
+if (( $+commands[nvim] )) ; then
+  alias vi='nvim'
+fi
 
 # Directory Stack alias
-alias dirs="dirs -v"
-alias ds="dirs"
+alias dirs='dirs -v'
+alias ds='dirs'
+
+alias zc='z -c'
 
 #############################
 # Completions
@@ -74,41 +136,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
 
-#############################
-# Load plugins
-#############################
-# enable fuzzy finder if it exists
-if [[ -f ~/.fzf.zsh ]] ; then
-  source ~/.fzf.zsh
-  export FZF_DEFAULT_OPTS="-m --cycle"
-  (( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
-fi
-
-if ! [[ -f "${HOME}/.zplug/zplug" ]]; then
-  echo "Downloading zplug..."
-  curl --progress-bar -fLo "${HOME}/.zplug/zplug" --create-dirs https://git.io/zplug
-fi
-source "${HOME}/.zplug/zplug"
-
-zplug "mafredri/zsh-async", of:"*.plugin.zsh", nice:-20
-zplug "leomao/zsh-hooks", of:"*.plugin.zsh", nice:-20
-zplug "zsh-users/zsh-completions", of:"*.plugin.zsh", nice:-20
-zplug "leomao/vim.zsh", of:vim.zsh, nice:-5
-zplug "leomao/pika-prompt", of:pika-prompt.zsh
-
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-zplug "zsh-users/zsh-syntax-highlighting", of:"*.plugin.zsh", nice:15
-
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  fi
-fi
-
-zplug load
-
 # load custom settings
-if [[ -f ~/.zshrc_custom ]]; then
-  source ~/.zshrc_custom
+if [[ -f "~/.zshrc.local" ]]; then
+  source "~/.zshrc.local"
 fi

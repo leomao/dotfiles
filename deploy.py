@@ -3,6 +3,7 @@
 import argparse
 import os, os.path, sys, subprocess
 import re
+import configparser
 
 CHOICES = {
     'zsh': {'.zshrc': '~/.zshrc', '.zshenv': '~/.zshenv'},
@@ -94,22 +95,35 @@ class ConfigDeployer:
         print('done.')
 
 def git_hook():
-    name = input('Enter your name: ')
-    email = input('Enter your email: ')
-    filename = os.path.expanduser('~/.gitconfig')
-    with open(filename) as file:
-        content = file.read()
-    content = re.sub(r'<YourName>', name, content)
-    content = re.sub(r'<YourEmail>', email, content)
+    filename = os.path.expanduser('~/.gitconfig.local')
+    if not os.path.isfile(filename):
+        open(filename, 'a').close()
+    gitconfig = configparser.ConfigParser()
+    gitconfig.read(filename)
+    name = None
+    email = None
+    if 'user' in gitconfig:
+        if 'name' in gitconfig['user']:
+            name = gitconfig['user']['name']
+        if 'email' in gitconfig['user']:
+            email = gitconfig['user']['email']
+    else:
+        gitconfig['user'] = {}
+    tn = input('Enter your name{}: '.format('({})'.format(name) if name else ''))
+    te = input('Enter your email{}: '.format('({})'.format(email) if email else ''))
+    if tn:
+        name = tn
+    if te:
+        email = te
+    gitconfig['user']['name'] = name
+    gitconfig['user']['email'] = email
     with open(filename, 'w') as file:
-        file.write(content)
-
+        gitconfig.write(file)
 
 if __name__ == '__main__':
     args = parser.parse_args()
 
     deployer = ConfigDeployer(CHOICES, args.method, args.keep)
-    deployer.set_method('git', 'COPY')
     deployer.set_hook('git', git_hook)
 
     if args.is_all:

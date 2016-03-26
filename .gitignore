@@ -34,7 +34,6 @@ tags
 
 # LaTeX specific #
 ##################
-
 *.pdf
 *.aux
 *.glo
