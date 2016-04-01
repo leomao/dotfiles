@@ -6,11 +6,11 @@ import re
 import configparser
 
 CHOICES = {
-    'zsh': {'.zshrc': '~/.zshrc', '.zshenv': '~/.zshenv'},
-    'tmux': {'.tmux.conf': '~/.tmux.conf'},
-    'git': {'.gitconfig': '~/.gitconfig', '.gitignore': '~/.gitignore'},
+    'zsh': {'zshrc': '~/.zshrc', 'zshenv': '~/.zshenv'},
+    'tmux': {'tmux.conf': '~/.tmux.conf'},
+    'git': {'gitconfig': '~/.gitconfig', 'gitignore': '~/.gitignore'},
     'font': {'fontconfig': '~/.config/fontconfig'},
-    'Xres': {'.Xresources': '~/.Xresources'},
+    'Xres': {'Xresources': '~/.Xresources'},
 }
 
 DEFAULT = [
