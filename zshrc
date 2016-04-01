@@ -2,8 +2,8 @@
 # Load plugins
 #############################
 # enable fuzzy finder if it exists
-if [[ -f "~/.fzf.zsh" ]] ; then
-  source "~/.fzf.zsh"
+if [[ -f "${HOME}/.fzf.zsh" ]] ; then
+  source "${HOME}/.fzf.zsh"
   export FZF_DEFAULT_OPTS="-m --cycle"
   (( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
 fi
@@ -142,6 +142,6 @@ zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
 
 # load custom settings
-if [[ -f "~/.zshrc.local" ]]; then
-  source "~/.zshrc.local"
+if [[ -f "${HOME}/.zshrc.local" ]]; then
+  source "${HOME}/.zshrc.local"
 fi
