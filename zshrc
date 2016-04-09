@@ -2,8 +2,8 @@
 # Load plugins
 #############################
 # enable fuzzy finder if it exists
-if [[ -f "${HOME}/.fzf.zsh" ]] ; then
-  source "${HOME}/.fzf.zsh"
+if [[ -f ~/.fzf.zsh ]] ; then
+  source ~/.fzf.zsh
   export FZF_DEFAULT_OPTS="-m --cycle"
   (( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
 fi
