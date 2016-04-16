@@ -27,6 +27,6 @@ export LESSCHARSET='utf-8'
   #export npm_config_prefix=~/.node_modules
 #fi
 
-if [[ -f "~/.zshenv.local" ]]; then
-  source "~/.zshenv.local"
+if [[ -f "${HOME}/.zshenv.local" ]]; then
+  source "${HOME}/.zshenv.local"
 fi
