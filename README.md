@@ -1,6 +1,7 @@
 # dotfiles of pika
 
 My personal dotfiles.
+These dotfiles are only tested on Archlinux with lastest software.
 
 ## How to deploy
 ```
@@ -9,7 +10,7 @@ $ ./deploy.py -h
 
 ## Zsh
 
-Need zsh 5.2+
+Need zsh 5.2+.
 
 using [zplug](https://github.com/b4b4r07/zplug).
 
@@ -33,8 +34,7 @@ Put your customization in `.zshenv.local` and `.zshrc.local`.
 
 ## Tmux
 
-Since tmux 2.1 has some backward imcompatible changes, the configuration
-only works with tmux 2.1 and above.
+Need tmux 2.2+.
 
 ## Git
 
@@ -53,6 +53,6 @@ so long as you have the following:
 - "Source Code Pro" or "Inconsolata"
 
 For Archlinux users, you can just install required fonts by
-```
+```console
 # pacman -S adobe-source-code-pro-fonts adobe-source-han-sans-tw-fonts
 ```
