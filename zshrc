@@ -23,7 +23,7 @@ zplug "leomao/pika-prompt", of:pika-prompt.zsh
 touch ~/.z # ensure that ~/.z exists
 zplug "rupa/z", of:z.sh
 
-zplug "so-fancy/diff-so-fancy", as:command
+zplug "so-fancy/diff-so-fancy", as:command, of:diff-so-fancy
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 zplug "zsh-users/zsh-syntax-highlighting", of:"*.plugin.zsh", nice:15
