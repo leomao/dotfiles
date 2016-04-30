@@ -14,22 +14,22 @@ if ! [[ -f "${HOME}/.zplug/zplug" ]]; then
 fi
 source "${HOME}/.zplug/zplug"
 
-zplug "mafredri/zsh-async", of:"*.plugin.zsh", nice:-20
-zplug "leomao/zsh-hooks", of:"*.plugin.zsh", nice:-20
-zplug "zsh-users/zsh-completions", of:"*.plugin.zsh", nice:-20
-zplug "leomao/vim.zsh", of:vim.zsh, nice:-5
-zplug "leomao/pika-prompt", of:pika-prompt.zsh
+zplug "mafredri/zsh-async", use:"async.zsh", nice:-20
+zplug "leomao/zsh-hooks", use:"*.plugin.zsh", nice:-20
+zplug "zsh-users/zsh-completions", use:"*.plugin.zsh", nice:-20
+zplug "leomao/vim.zsh", use:vim.zsh, nice:-5
+zplug "leomao/pika-prompt", use:pika-prompt.zsh
 
 touch ~/.z # ensure that ~/.z exists
-zplug "rupa/z", of:z.sh
+zplug "rupa/z", use:z.sh
 
-zplug "so-fancy/diff-so-fancy", as:command, of:diff-so-fancy
+zplug "so-fancy/diff-so-fancy", as:command, use:diff-so-fancy
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-zplug "zsh-users/zsh-syntax-highlighting", of:"*.plugin.zsh", nice:15
+zplug "zsh-users/zsh-syntax-highlighting", use:"*.plugin.zsh", nice:15
 # should be sourced after syntax-highlighting
 # because this wraps zle backword-char widget
-zplug "knu/zsh-manydots-magic", of:manydots-magic, nice:16
+zplug "knu/zsh-manydots-magic", use:manydots-magic, nice:16
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
