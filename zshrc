@@ -9,11 +9,13 @@ if [[ -f ~/.fzf.zsh ]] ; then
 fi
 
 if ! [[ -f "${HOME}/.zplug/zplug" ]]; then
-  echo "Downloading zplug..."
-  curl --progress-bar -fLo "${HOME}/.zplug/zplug" --create-dirs https://git.io/zplug
+  git clone --depth=1 https://github.com/b4b4r07/zplug "${HOME}/.zplug/repos/b4b4r07/zplug"
+  ln -sr "${HOME}/.zplug/repos/b4b4r07/zplug/zplug" "${HOME}/.zplug/zplug"
 fi
 source "${HOME}/.zplug/zplug"
+export ZPLUG_CLONE_DEPTH=1
 
+zplug "b4b4r07/zplug"
 zplug "mafredri/zsh-async", use:"async.zsh", nice:-20
 zplug "leomao/zsh-hooks", use:"*.plugin.zsh", nice:-20
 zplug "zsh-users/zsh-completions", use:"*.plugin.zsh", nice:-20
@@ -24,12 +26,10 @@ touch ~/.z # ensure that ~/.z exists
 zplug "rupa/z", use:z.sh
 
 zplug "so-fancy/diff-so-fancy", as:command, use:diff-so-fancy
+zplug "Tarrasch/zsh-bd", use:bd.zsh
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 zplug "zsh-users/zsh-syntax-highlighting", use:"*.plugin.zsh", nice:15
-# should be sourced after syntax-highlighting
-# because this wraps zle backword-char widget
-zplug "knu/zsh-manydots-magic", use:manydots-magic, nice:16
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
@@ -109,7 +109,9 @@ fi
 alias dirs='dirs -v'
 alias ds='dirs'
 
-alias zc='z -c'
+if (( $+commands[z] )) ; then
+  alias zc='z -c'
+fi
 
 #############################
 # Completions
