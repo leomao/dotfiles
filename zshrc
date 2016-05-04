@@ -9,13 +9,13 @@ if [[ -f ~/.fzf.zsh ]] ; then
 fi
 
 if ! [[ -f "${HOME}/.zplug/zplug" ]]; then
-  git clone --depth=1 https://github.com/b4b4r07/zplug "${HOME}/.zplug/repos/b4b4r07/zplug"
-  ln -sr "${HOME}/.zplug/repos/b4b4r07/zplug/zplug" "${HOME}/.zplug/zplug"
+  git clone --depth=1 https://github.com/zplug/zplug "${HOME}/.zplug/repos/zplug/zplug"
+  ln -sr "${HOME}/.zplug/repos/zplug/zplug/zplug" "${HOME}/.zplug/zplug"
 fi
 source "${HOME}/.zplug/zplug"
 export ZPLUG_CLONE_DEPTH=1
 
-zplug "b4b4r07/zplug"
+zplug "zplug/zplug"
 zplug "mafredri/zsh-async", use:"async.zsh", nice:-20
 zplug "leomao/zsh-hooks", use:"*.plugin.zsh", nice:-20
 zplug "zsh-users/zsh-completions", use:"*.plugin.zsh", nice:-20
