@@ -8,11 +8,10 @@ if [[ -f ~/.fzf.zsh ]] ; then
   (( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
 fi
 
-if ! [[ -f "${HOME}/.zplug/zplug" ]]; then
-  git clone --depth=1 https://github.com/zplug/zplug "${HOME}/.zplug/repos/zplug/zplug"
-  ln -sr "${HOME}/.zplug/repos/zplug/zplug/zplug" "${HOME}/.zplug/zplug"
+if ! [[ -f "${HOME}/.zplug/init.zsh" ]]; then
+  curl -sL get.zplug.sh | zsh
 fi
-source "${HOME}/.zplug/zplug"
+source "${HOME}/.zplug/init.zsh"
 export ZPLUG_CLONE_DEPTH=1
 
 zplug "zplug/zplug"
