@@ -9,7 +9,7 @@ if [[ -f ~/.fzf.zsh ]] ; then
 fi
 
 if ! [[ -f "${HOME}/.zplug/init.zsh" ]]; then
-  curl -sL get.zplug.sh | zsh
+  curl -sL zplug.sh/installer | zsh
 fi
 source "${HOME}/.zplug/init.zsh"
 export ZPLUG_CLONE_DEPTH=1
