@@ -26,7 +26,7 @@ using [zplug](https://github.com/b4b4r07/zplug).
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 - [z](https://github.com/rupa/z)
 - [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
-- [zsh-manydots-magic](https://github.com/knu/zsh-manydots-magic)
+- [zsh-bd](https://github.com/Tarrasch/zsh-bd)
 
 ### Customization
 
