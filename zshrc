@@ -2,30 +2,30 @@
 # Load plugins
 #############################
 # enable fuzzy finder if it exists
-if [[ -f ~/.fzf.zsh ]] ; then
-  source ~/.fzf.zsh
-  export FZF_DEFAULT_OPTS="-m --cycle"
-  (( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
+if ! [[ -f ~/.fzf.zsh ]] ; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install --all
 fi
+
+source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS="-m --cycle"
+(( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 if ! [[ -f "${HOME}/.zplug/init.zsh" ]]; then
   curl -sL zplug.sh/installer | zsh
 fi
-source "${HOME}/.zplug/init.zsh"
 export ZPLUG_CLONE_DEPTH=1
+source "${HOME}/.zplug/init.zsh"
 
 zplug "zplug/zplug"
+zplug "zsh-users/zsh-completions", use:"*.plugin.zsh", nice:-20
 zplug "mafredri/zsh-async", use:"async.zsh", nice:-20
 zplug "leomao/zsh-hooks", use:"*.plugin.zsh", nice:-20
-zplug "zsh-users/zsh-completions", use:"*.plugin.zsh", nice:-20
 zplug "leomao/vim.zsh", use:vim.zsh, nice:-5
 zplug "leomao/pika-prompt", use:pika-prompt.zsh
 
-touch ~/.z # ensure that ~/.z exists
-zplug "rupa/z", use:z.sh
-
 zplug "so-fancy/diff-so-fancy", as:command, use:diff-so-fancy
-zplug "Tarrasch/zsh-bd", use:bd.zsh
+zplug "b4b4r07/enhancd", use:init.sh
 
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 zplug "zsh-users/zsh-syntax-highlighting", use:"*.plugin.zsh", nice:15
@@ -107,10 +107,6 @@ fi
 # Directory Stack alias
 alias dirs='dirs -v'
 alias ds='dirs'
-
-if (( $+commands[z] )) ; then
-  alias zc='z -c'
-fi
 
 #############################
 # Completions
