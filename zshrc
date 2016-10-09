@@ -26,7 +26,9 @@ zplug "leomao/pika-prompt", use:pika-prompt.zsh
 
 zplug "so-fancy/diff-so-fancy", as:command, use:diff-so-fancy
 
-export ENHANCD_COMMAND='ef'
+export ENHANCD_DISABLE_HOME=1
+export ENHANCD_DOT_ARG='.'
+export ENHANCD_HYPHEN_ARG='-p'
 zplug "b4b4r07/enhancd", use:init.sh
 
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
