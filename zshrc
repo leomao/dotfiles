@@ -14,7 +14,7 @@ export FZF_DEFAULT_OPTS="-m --cycle"
 if ! [[ -f "${HOME}/.zplug/init.zsh" ]]; then
   curl -sL zplug.sh/installer | zsh
 fi
-export ZPLUG_CLONE_DEPTH=1
+zstyle :zplug:tag depth 1
 source "${HOME}/.zplug/init.zsh"
 
 zplug "zplug/zplug"
