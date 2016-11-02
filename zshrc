@@ -102,6 +102,7 @@ alias history='fc -l 1'
 alias tmux='tmux -2'
 
 # vi as vim
+alias vi='vim'
 alias v='vim'
 if (( $+commands[nvim] )) ; then
   alias v='nvim'
