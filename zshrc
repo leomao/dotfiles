@@ -25,7 +25,7 @@ zplug "zsh-users/zsh-completions", use:"*.plugin.zsh"
 zplug "mafredri/zsh-async", use:"async.zsh"
 zplug "leomao/zsh-hooks", use:"*.plugin.zsh"
 zplug "leomao/vim.zsh", use:vim.zsh, defer:1
-zplug "leomao/pika-prompt", use:pika-prompt.zsh, defer:1
+zplug "leomao/pika-prompt", use:pika-prompt.zsh, defer:2
 
 zplug "so-fancy/diff-so-fancy", as:command, use:diff-so-fancy
 
@@ -34,7 +34,7 @@ export ENHANCD_DOT_ARG='.'
 zplug "b4b4r07/enhancd", use:init.sh
 
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-zplug "zsh-users/zsh-syntax-highlighting", use:"*.plugin.zsh", defer:2
+zplug "zsh-users/zsh-syntax-highlighting", use:"*.plugin.zsh", defer:3
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
