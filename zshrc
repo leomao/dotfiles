@@ -20,12 +20,12 @@ fi
 zstyle :zplug:tag depth 1
 source "${HOME}/.zplug/init.zsh"
 
-zplug "zplug/zplug"
-zplug "zsh-users/zsh-completions", use:"*.plugin.zsh", nice:-20
-zplug "mafredri/zsh-async", use:"async.zsh", nice:-20
-zplug "leomao/zsh-hooks", use:"*.plugin.zsh", nice:-20
-zplug "leomao/vim.zsh", use:vim.zsh, nice:-5
-zplug "leomao/pika-prompt", use:pika-prompt.zsh
+#zplug "zplug/zplug"
+zplug "zsh-users/zsh-completions", use:"*.plugin.zsh"
+zplug "mafredri/zsh-async", use:"async.zsh"
+zplug "leomao/zsh-hooks", use:"*.plugin.zsh"
+zplug "leomao/vim.zsh", use:vim.zsh, defer:1
+zplug "leomao/pika-prompt", use:pika-prompt.zsh, defer:1
 
 zplug "so-fancy/diff-so-fancy", as:command, use:diff-so-fancy
 
@@ -34,7 +34,7 @@ export ENHANCD_DOT_ARG='.'
 zplug "b4b4r07/enhancd", use:init.sh
 
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-zplug "zsh-users/zsh-syntax-highlighting", use:"*.plugin.zsh", nice:15
+zplug "zsh-users/zsh-syntax-highlighting", use:"*.plugin.zsh", defer:2
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "

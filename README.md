@@ -24,7 +24,7 @@ using [zplug](https://github.com/b4b4r07/zplug).
 - [vim.zsh](https://github.com/leomao/vim.zsh)
 - [zsh-completions](https://github.com/zsh-users/zsh-completions)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-- [z](https://github.com/rupa/z)
+- [enhancd](https://github.com/b4b4r07/enhancd)
 - [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 - [zsh-bd](https://github.com/Tarrasch/zsh-bd)
 
