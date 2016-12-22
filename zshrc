@@ -20,7 +20,7 @@ fi
 zstyle :zplug:tag depth 1
 source "${HOME}/.zplug/init.zsh"
 
-#zplug "zplug/zplug"
+zplug "zplug/zplug"
 zplug "zsh-users/zsh-completions", use:"*.plugin.zsh"
 zplug "mafredri/zsh-async", use:"async.zsh"
 zplug "leomao/zsh-hooks", use:"*.plugin.zsh"
