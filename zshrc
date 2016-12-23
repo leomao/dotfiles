@@ -1,4 +1,10 @@
 #############################
+# Load zle
+#############################
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+
+#############################
 # Load plugins
 #############################
 # enable fuzzy finder if it exists
@@ -83,7 +89,10 @@ setopt rm_star_wait
 # Directory Stack settings
 DIRSTACKSIZE=8
 setopt auto_cd
-setopt autopushd pushdminus pushdsilent pushdtohome
+setopt autopushd pushdminus pushdsilent pushdtohome pushd_ignore_dups
+
+setopt mark_dirs
+setopt multios
 
 #############################
 # Aliases
