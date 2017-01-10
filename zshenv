@@ -9,23 +9,36 @@ export EDITOR="vim"
 export LESS='-RfFXi -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
 export LESSCHARSET='utf-8'
 
-# Because of a bug, we set path in .zshrc
-#if (( $+commands[ruby] )) ; then
-  #if [[ -d ~/.rbenv ]] ; then
-    ## use rbenv if it exists
-    #export PATH="$HOME/.rbenv/bin:$PATH"
-    #eval "$(rbenv init -)"
-  #else
-    ## According to https://wiki.archlinux.org/index.php/Ruby#RubyGems
-    #export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
-    #export PATH="${GEM_HOME}/bin:$PATH"
-  #fi
-#fi
+#############################
+# Path
+#############################
+# see the notes below
+# https://wiki.archlinux.org/index.php/Zsh#Configuring_.24PATH
+typeset -U path
 
-#if (( $+commands[npm] )) ; then
-  #export PATH="$HOME/.node_modules/bin:$PATH"
-  #export npm_config_prefix=~/.node_modules
-#fi
+if (( $+commands[ruby] )) ; then
+  if [[ -d ~/.rbenv ]] ; then
+    # use rbenv if it exists
+    path=(~/.rbenv/bin $path[@])
+    eval "$(rbenv init -)"
+  else
+    # According to https://wiki.archlinux.org/index.php/Ruby#RubyGems
+    export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+    path=($GEM_HOME/bin $path[@])
+  fi
+fi
+
+if (( $+commands[npm] )) ; then
+  path=(~/.node_modules/bin $path[@])
+  export npm_config_prefix=~/.node_modules
+fi
+
+if [[ $+commands[go] && -d ~/.go/bin ]]; then
+  export GOPATH=~/.go
+  path=($GOPATH/bin $path[@])
+fi
+
+path=($path[@] "$HOME/.local/bin")
 
 if [[ -f "${HOME}/.zshenv.local" ]]; then
   source "${HOME}/.zshenv.local"

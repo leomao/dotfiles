@@ -6,7 +6,7 @@ import re
 import configparser
 
 CHOICES = {
-    'zsh': {'zshrc': '~/.zshrc', 'zshenv': '~/.zshenv'},
+    'zsh': {'zshrc': '~/.zshrc', 'zshenv': '~/.zshenv', 'zprofile': '~/.zprofile'},
     'tmux': {'tmux.conf': '~/.tmux.conf'},
     'git': {'gitconfig': '~/.gitconfig', 'gitignore': '~/.gitignore'},
     'font': {'fontconfig': '~/.config/fontconfig'},

@@ -52,29 +52,6 @@ fi
 zplug load
 
 #############################
-# Path
-#############################
-# Because of a bug, we set path here instead of .zshenv
-# see the notes below
-# https://wiki.archlinux.org/index.php/Zsh#Configuration_files
-if (( $+commands[ruby] )) ; then
-  if [[ -d ~/.rbenv ]] ; then
-    # use rbenv if it exists
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
-  else
-    # According to https://wiki.archlinux.org/index.php/Ruby#RubyGems
-    export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
-    export PATH="${GEM_HOME}/bin:$PATH"
-  fi
-fi
-
-if (( $+commands[npm] )) ; then
-  export PATH="$HOME/.node_modules/bin:$PATH"
-  export npm_config_prefix=~/.node_modules
-fi
-
-#############################
 # Options
 #############################
 # don't record duplicate history
