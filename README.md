@@ -36,6 +36,12 @@ Put your customization in `.zshenv.local` and `.zshrc.local`.
 
 Need tmux 2.2+.
 
+tmux plugins managed by [tpm](https://github.com/tmux-plugins/tpm):
+- [tpm](https://github.com/tmux-plugins/tpm)
+- [tmux-copycat](https://github.com/tmux-plugins/tmux-copycat)
+- [tmux-yank](https://github.com/tmux-plugins/tmux-yank)
+- [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)
+
 ## Git
 
 One can add custom settings in `~/.gitconfig.local`.

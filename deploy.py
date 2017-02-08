@@ -120,11 +120,23 @@ def git_hook():
     with open(filename, 'w') as file:
         gitconfig.write(file)
 
+def tmux_hook():
+    dirpath = os.path.expanduser('~/.tmux/plugins/tpm')
+    if not os.path.isdir(dirpath):
+        print('installing tmux plugin manager...')
+        subprocess.call(['git clone --depth=1'
+                         ' https://github.com/tmux-plugins/tpm'
+                         ' ~/.tmux/plugins/tpm'
+                         ' 2> /dev/null'], shell=True)
+        install_script = os.path.join(dirpath, 'scripts/install_plugins.sh')
+        subprocess.call([install_script], shell=True)
+
 if __name__ == '__main__':
     args = parser.parse_args()
 
     deployer = ConfigDeployer(CHOICES, args.method, args.keep)
     deployer.set_hook('git', git_hook)
+    deployer.set_hook('tmux', tmux_hook)
 
     if args.is_all:
         targets = list(CHOICES.keys())
