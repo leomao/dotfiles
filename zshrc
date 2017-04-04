@@ -90,7 +90,11 @@ alias history='fc -l 1'
 # Tmux 256 default
 alias tmux='tmux -2'
 
-# vi as vim
+# vim alias
+if [[ `vim --version 2> /dev/null | grep -- +clientserver` ]] ; then
+  # always use vim client server
+  alias vim='vim --servername vim'
+fi
 alias vi='vim'
 alias v='vim'
 if (( $+commands[nvim] )) ; then
