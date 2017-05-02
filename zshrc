@@ -21,7 +21,7 @@ export FZF_DEFAULT_OPTS="-m --cycle"
 (( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 if ! [[ -f "${HOME}/.zplug/init.zsh" ]]; then
-  curl -sL zplug.sh/installer | zsh
+  curl -sL https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 zstyle :zplug:tag depth 1
 source "${HOME}/.zplug/init.zsh"
