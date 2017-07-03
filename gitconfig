@@ -1,5 +1,6 @@
 [core]
   excludesfile = ~/.gitignore
+  quotePath = false
 [alias]
   cl = clone
   rmo = remote
