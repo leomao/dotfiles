@@ -26,11 +26,10 @@ using [zplug](https://github.com/b4b4r07/zplug).
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 - [enhancd](https://github.com/b4b4r07/enhancd)
 - [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
-- [zsh-bd](https://github.com/Tarrasch/zsh-bd)
 
 ### Customization
 
-Put your customization in `.zshenv.local` and `.zshrc.local`.
+Put your customization in `~/.zshenv.local` and `~/.zshrc.local`.
 
 ## Tmux
 
@@ -47,7 +46,7 @@ tmux plugins managed by [tpm](https://github.com/tmux-plugins/tpm):
 One can add custom settings in `~/.gitconfig.local`.
 Notice that this configuration use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 as the pager of `git diff` and `git show`. If you don't want to use the
-zsh config, you should overwrite this settings in `~/.gitconfig.local`.
+zsh config, you should overwrite this setting in `~/.gitconfig.local`.
 
 ## Fontconfig
 
@@ -55,10 +54,10 @@ This fontconfig is for Traditional Chinese users on Archlinux primarily.
 It's not tested on other distros. But it should work on other distros as well
 so long as you have the following:
 
-- one of "Source Han Sans TW", "Source Han Sans TC", "Noto Sans CJK TC"
+- one of "Noto Sans CJK TC", "Source Han Sans TW", "Source Han Sans TC"
 - "Source Code Pro" or "Inconsolata"
 
 For Archlinux users, you can just install required fonts by
 ```console
-# pacman -S adobe-source-code-pro-fonts adobe-source-han-sans-tw-fonts
+# pacman -S noto-fonts-cjk adobe-source-code-pro-fonts
 ```
