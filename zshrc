@@ -105,6 +105,11 @@ fi
 alias dirs='dirs -v'
 alias ds='dirs'
 
+# use thefuck if available
+if (( $+commands[thefuck] )) ; then
+  eval $(thefuck --alias)
+fi
+
 #############################
 # Completions
 #############################
