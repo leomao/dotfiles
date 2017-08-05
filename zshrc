@@ -75,13 +75,23 @@ setopt multios
 # Aliases
 #############################
 # List direcory contents
-alias ls='ls -h --color --group-directories-first'
-alias l='ls -F'
-alias ll='ls -lF'
-alias la='ls -lAF'
-alias lx='ls -lXB'
-alias lk='ls -lSr'
-alias lt='ls -lAFtr'
+if (( $+commands[exa] )) ; then
+  alias ls='exa --group-directories-first'
+  alias l='ls -F'
+  alias ll='ls -glF'
+  alias la='ll -a'
+  alias lx='ll -s extension'
+  alias lk='ll -rs size'
+  alias lt='ll -ars modified'
+else
+  alias ls='ls -h --color --group-directories-first'
+  alias l='ls -F'
+  alias ll='ls -lF'
+  alias la='ls -lAF'
+  alias lx='ls -lXB'
+  alias lk='ls -lSr'
+  alias lt='ls -lAFtr'
+fi
 alias sl=ls # often screw this up
 
 # Show history

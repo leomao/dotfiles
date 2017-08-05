@@ -27,6 +27,11 @@ using [zplug](https://github.com/b4b4r07/zplug).
 - [enhancd](https://github.com/b4b4r07/enhancd)
 - [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 
+### Related tools
+
+- [ag](https://github.com/ggreer/the_silver_searcher)
+- [exa](https://github.com/ogham/exa)
+
 ### Customization
 
 Put your customization in `~/.zshenv.local` and `~/.zshrc.local`.
