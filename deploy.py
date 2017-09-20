@@ -11,12 +11,14 @@ CHOICES = {
     'git': {'gitconfig': '~/.gitconfig', 'gitignore': '~/.gitignore'},
     'font': {'fontconfig': '~/.config/fontconfig'},
     'Xres': {'Xresources': '~/.Xresources'},
+    'ignore': {'ignore': '~/.ignore'},
 }
 
 DEFAULT = [
     'zsh',
     'tmux',
     'git',
+    'ignore',
 ]
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__))
