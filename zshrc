@@ -18,7 +18,12 @@ fi
 
 source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="-m --cycle"
-(( $+commands[ag] )) && export FZF_DEFAULT_COMMAND='ag -l -g ""'
+
+if (( $+commands[rg] )) ; then
+  export FZF_DEFAULT_COMMAND='rg -l ""'
+elif (( $+commands[ag] )); then
+  export FZF_DEFAULT_COMMAND='ag -l -g ""'
+fi
 
 if ! [[ -f "${HOME}/.zplug/init.zsh" ]]; then
   curl -sL https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
@@ -71,6 +76,9 @@ setopt autopushd pushdminus pushdsilent pushdtohome pushd_ignore_dups
 setopt mark_dirs
 setopt multios
 
+# also do completion for aliases
+setopt complete_aliases
+
 #############################
 # Aliases
 #############################
@@ -93,6 +101,15 @@ else
   alias lt='ls -lAFtr'
 fi
 alias sl=ls # often screw this up
+
+
+if (( $+commands[rg] )); then
+  alias gg='rg'
+elif (( $+commands[ag] )); then
+  alias gg='ag'
+else
+  alias gg='grep -R -n'
+fi
 
 # Show history
 alias history='fc -l 1'
