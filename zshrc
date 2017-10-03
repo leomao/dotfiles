@@ -160,7 +160,7 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 
 # Directory
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
-export LS_COLORS='di=01;94:ln=01;96:ex=01;92'
+export LS_COLORS='di=1;34:ln=36:so=32:pi=33:ex=32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # default: --
