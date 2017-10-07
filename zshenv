@@ -33,7 +33,7 @@ if (( $+commands[npm] )) ; then
   export npm_config_prefix=~/.node_modules
 fi
 
-if [[ $+commands[go] && -d ~/.go/bin ]]; then
+if [[ $+commands[go] ]]; then
   export GOPATH=~/.go
   path=($GOPATH/bin $path[@])
 fi

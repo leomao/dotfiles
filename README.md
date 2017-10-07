@@ -31,6 +31,7 @@ using [zplug](https://github.com/b4b4r07/zplug).
 
 - [ag](https://github.com/ggreer/the_silver_searcher)
 - [exa](https://github.com/ogham/exa)
+- xsel
 
 ### Customization
 
@@ -49,9 +50,10 @@ tmux plugins managed by [tpm](https://github.com/tmux-plugins/tpm):
 ## Git
 
 One can add custom settings in `~/.gitconfig.local`.
-Notice that this configuration use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
+Note that this configuration use [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 as the pager of `git diff` and `git show`. If you don't want to use the
-zsh config, you should overwrite this setting in `~/.gitconfig.local`.
+zsh config, you should have `diff-so-fancy` in your `PATH` or overwrite this
+setting in `~/.gitconfig.local`.
 
 ## Fontconfig
 

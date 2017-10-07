@@ -102,7 +102,7 @@ else
 fi
 alias sl=ls # often screw this up
 
-
+# grep
 if (( $+commands[rg] )); then
   alias gg='rg'
 elif (( $+commands[ag] )); then
