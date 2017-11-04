@@ -48,10 +48,7 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 zplug "zsh-users/zsh-syntax-highlighting", use:"*.plugin.zsh", defer:3
 
 if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  fi
+  zplug install
 fi
 
 zplug load
