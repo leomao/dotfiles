@@ -1,37 +1,37 @@
 [core]
-  excludesfile = ~/.gitignore
-  quotePath = false
+	excludesfile = ~/.gitignore
+	quotePath = false
 [alias]
-  cl = clone
-  rmo = remote
-  ph = push
-  pl = pull
-  ci = commit
-  rb = rebase
-  chp = cherry-pick
-  st = status -sb
-  fc = fetch
-  mg = merge
-  mt = mergetool
-  br = branch
-  bl = blame
-  co = checkout
-  rv = revert
-  rs = reset
-  us = reset HEAD -- # unstage
-  ss = stash
-  df = diff
-  dt = difftool
-  la = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative --all
-  lb = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative --branches
-  lg = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n          %s %Cgreen(%cr)' --abbrev-commit --date=relative
-  ls = ls-files
+	cl = clone
+	rmo = remote
+	ph = push
+	pl = pull
+	ci = commit
+	rb = rebase
+	chp = cherry-pick
+	st = status -sb
+	fc = fetch
+	mg = merge
+	mt = mergetool
+	br = branch
+	bl = blame
+	co = checkout
+	rv = revert
+	rs = reset
+	us = reset HEAD -- # unstage
+	ss = stash
+	df = diff
+	dt = difftool
+	la = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n					%s %Cgreen(%cr)' --abbrev-commit --date=relative --all
+	lb = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n					%s %Cgreen(%cr)' --abbrev-commit --date=relative --branches
+	lg = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n					%s %Cgreen(%cr)' --abbrev-commit --date=relative
+	ls = ls-files
 [push]
-  default = tracking
+	default = tracking
 [branch]
-  autosetuprebase = always
+	autosetuprebase = always
 [color]
-  ui = true
+	ui = true
 [color "diff"]
 	meta = yellow bold
 	commit = green bold
@@ -45,15 +45,16 @@
 	newNormal = green bold
 	newHighlight = green bold 22
 [diff]
-  tool = vimdiff
+	tool = vimdiff
 [difftool]
-  prompt = false
+	prompt = false
 [merge]
-  tool = vimdiff
+	tool = vimdiff
+	conflictstyle = diff3
 [mergetool]
-  keepBackup = false
+	keepBackup = false
 [pager]
-  diff = diff-so-fancy | less -RFX
-  show = diff-so-fancy | less -RFX
+	diff = diff-so-fancy | less -RFX
+	show = diff-so-fancy | less -RFX
 [include]
-  path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
