@@ -44,10 +44,10 @@ zstyle :zplug:tag depth 1
 source "${HOME}/.zplug/init.zsh"
 
 zplug "zplug/zplug"
-zplug "mafredri/zsh-async", use:"async.zsh"
-zplug "leomao/zsh-hooks", use:"*.plugin.zsh"
+zplug "mafredri/zsh-async", use:async.zsh
 zplug "leomao/vim.zsh", use:vim.zsh, defer:1
-zplug "leomao/pika-prompt", use:pika-prompt.zsh, defer:2
+export PURE_GIT_PULL=0
+zplug "leomao/pure", use:pure.zsh, defer:2
 
 export ENHANCD_DISABLE_HOME=1
 export ENHANCD_DOT_ARG='.'
