@@ -19,7 +19,6 @@ using [zplug](https://github.com/b4b4r07/zplug).
 
 ### plugins:
 
-- [zsh-hooks](https://github.com/leomao/zsh-hooks)
 - [zsh-async](https://github.com/mafredri/zsh-async)
 - [vim.zsh](https://github.com/leomao/vim.zsh)
 - [zsh-completions](https://github.com/zsh-users/zsh-completions)

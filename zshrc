@@ -10,8 +10,9 @@ zle -N self-insert url-quote-magic
 if [[ -f /etc/arch-release ]]; then
   package_list=(fzf diff-so-fancy zsh-syntax-highlighting zsh-completions)
   if ! pacman -Qq ${package_list[@]} > /dev/null 2>&1; then
-    echo "You're using Archlinux! Use pacman to manage some nice tools:"
+    echo "You're using Archlinux! Use pacman to manage the following nice tools:"
     echo ${package_list[@]}
+    sudo pacman -S --needed ${package_list[@]}
   fi
 fi
 
