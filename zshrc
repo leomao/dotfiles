@@ -127,6 +127,10 @@ else
   alias gg='grep -R -n'
 fi
 
+if (( $+commands[fuck] )); then
+  alias fk='fuck'
+fi
+
 # Show history
 alias history='fc -l 1'
 
