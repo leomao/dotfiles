@@ -99,7 +99,15 @@ setopt complete_aliases
 # Aliases
 #############################
 # List direcory contents
-if (( $+commands[exa] )) ; then
+if (( $+commands[lsd] )) ; then
+  alias ls='lsd --icon never --group-dirs first'
+  alias l='ls -F'
+  alias ll='ls -lF'
+  alias la='ll -A'
+  #alias lx='ll -s extension'
+  alias lk='ll -rS'
+  alias lt='ll -rt'
+elif (( $+commands[exa] )) ; then
   alias ls='exa --group-directories-first'
   alias l='ls -F'
   alias ll='ls -glF'
@@ -111,7 +119,7 @@ else
   alias ls='ls -h --color --group-directories-first'
   alias l='ls -F'
   alias ll='ls -lF'
-  alias la='ls -lAF'
+  alias la='ll -A'
   alias lx='ls -lXB'
   alias lk='ls -lSr'
   alias lt='ls -lAFtr'
