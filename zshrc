@@ -99,7 +99,7 @@ setopt complete_aliases
 # Aliases
 #############################
 # List direcory contents
-elif (( $+commands[exa] )) ; then
+if (( $+commands[exa] )) ; then
   alias ls='exa --group-directories-first'
   alias l='ls -F'
   alias ll='ls -glF'
