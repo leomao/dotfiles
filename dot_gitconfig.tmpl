@@ -1,0 +1,61 @@
+[user]
+  name = "{{ .name }}"
+  email = "{{ .email }}"
+[core]
+	excludesfile = ~/.gitignore
+	quotePath = false
+[alias]
+	cl = clone
+	rmo = remote
+	ph = push
+	pl = pull
+	ci = commit
+	rb = rebase
+	chp = cherry-pick
+	st = status -sb
+	fc = fetch
+	mg = merge
+	mt = mergetool
+	br = branch
+	bl = blame
+	co = checkout
+	rv = revert
+	rs = reset
+	us = reset HEAD -- # unstage
+	ss = stash
+	df = diff
+	dt = difftool
+	la = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n					%s %Cgreen(%cr)' --abbrev-commit --date=relative --all
+	lb = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n					%s %Cgreen(%cr)' --abbrev-commit --date=relative --branches
+	lg = log --date-order --graph --format=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset%n					%s %Cgreen(%cr)' --abbrev-commit --date=relative
+	ls = ls-files
+[push]
+	default = tracking
+[branch]
+	autosetuprebase = always
+[color]
+	ui = true
+[color "diff"]
+	meta = yellow bold
+	commit = green bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red 88
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	keepBackup = false
+[pager]
+	diff = diff-so-fancy | less -RFX
+	show = diff-so-fancy | less -RFX
