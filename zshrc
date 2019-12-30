@@ -55,6 +55,9 @@ export ENHANCD_DOT_ARG='.'
 zplug "b4b4r07/enhancd", use:init.sh
 
 if [[ -f /etc/arch-release ]]; then
+  if [[ -d /usr/share/zsh/plugins/zsh-autosuggestions ]]; then
+    zplug "/usr/share/zsh/plugins/zsh-autosuggestions", from:local, defer:2
+  fi
   if [[ -d /usr/share/zsh/plugins/zsh-syntax-highlighting ]]; then
     zplug "/usr/share/zsh/plugins/zsh-syntax-highlighting", from:local, defer:3
   fi
