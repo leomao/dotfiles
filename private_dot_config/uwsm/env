@@ -2,6 +2,16 @@ export XCURSOR_THEME=Bibata-Modern-Classic
 export XCURSOR_SIZE=24
 
 export LIBVA_DRIVER_NAME=nvidia
-export GBM_BACKEND=nvidia-drm
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
 export NVD_BACKEND=direct
+
+export XMODIFIERS=@im=fcitx
+export INPUT_METHOD=fcitx
+export SDL_IM_MODULE=fcitx
+
+export QT_QPA_PLATFORM="wayland;xcb"
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+
+# electron
+export ELECTRON_OZONE_PLATFORM_HINT=auto
