@@ -1,10 +1,10 @@
 [user]
-  name = "{{ .name }}"
-  email = "{{ .email }}"
+	name = "{{ .name }}"
+	email = "{{ .email }}"
 [core]
 	excludesfile = ~/.gitignore
 	quotePath = false
-  pager = delta
+	pager = delta
 [alias]
 	cl = clone
 	rmo = remote
@@ -37,7 +37,7 @@
 [color]
 	ui = true
 [diff]
-  colorMoved = default
+	colorMoved = default
 	tool = vimdiff
 [difftool]
 	prompt = false
@@ -47,8 +47,11 @@
 [mergetool]
 	keepBackup = false
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [delta]
-  navigate = true
+	navigate = true
+	side-by-side = true
+[init]
+	defaultBranch = main
 [include]
 	path = ~/.gitconfig.local
