@@ -39,6 +39,15 @@ window#waybar.hidden {
   background-color: #cdd6f4;
 }
 
+#workspaces button.visible:not(.active) {
+  border: 1px solid #cdd6f4;
+}
+
+#workspaces button.special.active {
+  color: #1e1e2e;
+  background-color: #fe968b;
+}
+
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
