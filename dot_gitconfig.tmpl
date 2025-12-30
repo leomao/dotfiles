@@ -38,14 +38,16 @@
 	ui = true
 [diff]
 	colorMoved = default
-	tool = vimdiff
+	tool = nvimdiff
 [difftool]
 	prompt = false
 [merge]
-	tool = vimdiff
+	tool = nvimdiff
 	conflictstyle = diff3
 [mergetool]
 	keepBackup = false
+[mergetool "nvimdiff"]
+	layout = "LOCAL,BASE,REMOTE / MERGED"
 [interactive]
 	diffFilter = delta --color-only
 [delta]
